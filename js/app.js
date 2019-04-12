@@ -5,18 +5,17 @@ function toPigLatin(str) {
   let prep = str.toLowerCase();
   let firstChar = prep.charAt(0);
 
-  if (firstChar === 'a' || 'e' || 'i' || 'o' || 'u') {
+  if (firstChar === 'a' || firstChar === 'e' || firstChar === 'i' || firstChar === 'o' || firstChar === 'u') {
     let result = prep + '-ay';
-    return prep + '-ay';
-  }
-  if (firstchar !== 'a' || 'e' || 'i' || 'o' || 'u' || 'y') {
-    for (let i = 0; i < prep.length; i++) {
-      if (prep[i] !== 'a' || 'e' || 'i' || 'o' || 'u'){
-        prep.splice(0, i)
-        console.log(prep.splice(0, i))
-      }
+    return result;
+  } else {
+    for (let i = 1; i !== 'a' || i !== 'e' || i !== 'i' || i !== 'o' || i !== 'u' || i !== 'y'; i++) {
+      let appended = '-' + prep.slice(0, i) + 'ay';
+      let notAppended = prep.substring(i, prep.length);
+      return notAppended + appended;
     }
   }
 }
+
 console.log(toPigLatin(vowelExample));
 console.log(toPigLatin(consonantExample));
